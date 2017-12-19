@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.chequer.axboot.admin.domain.boardPro.BoardProMapper">
+ 
+    <select id="findAll" resultType="boardPro" parameterType="boardPro" statementType="PREPARED">
+        SELECT
+            bno AS bno,
+            subject AS subject,
+            content AS content,
+            writer AS writer,
+            reg_date AS regDate,
+            hit AS hit
+        FROM
+            board_pro
+    </select>
+ 
+    <select id="findOne" resultType="boardPro" parameterType="boardPro" statementType="PREPARED">
+        SELECT
+            bno AS bno,
+            subject AS subject,
+            content AS content,
+            writer AS writer,
+            reg_date AS regDate,
+            hit AS hit
+        FROM
+            board_pro
+        WHERE
+            bno = #{bno}
+    </select>
+ 
+   <update id="delete" parameterType="boardPro" statementType="PREPARED">
+        DELETE FROM
+            board_pro
+        WHERE
+            bno = #{bno}
+    </update>
+ 
+   <update id="update" parameterType="boardPro" statementType="PREPARED">
+        UPDATE board_pro
+        SET
+            subject = #{subject},
+            content = #{content},
+            writer = #{writer},
+            reg_date = #{regDate},
+            hit = #{hit}
+        WHERE
+            bno = #{bno}
+    </update>
+ 
+   <update id="insert" parameterType="boardPro" statementType="PREPARED">
+        INSERT INTO board_pro (
+            bno,
+            subject,
+            content,
+            writer,
+            reg_date,
+            hit
+        ) VALUES (
+            #{bno},
+            #{subject},
+            #{content},
+            #{writer},
+            #{regDate},
+            #{hit}
+        )
+    </update>
+</mapper>
